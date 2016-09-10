@@ -23,7 +23,7 @@ public class javamap {
 	      {
 	         String s=in.nextLine();
 	         if(map.containsKey(s)){
-	        	 System.out.println(s+"="+map.get(s));
+	        	 System.out.println(s+"="+map.get(s));	        	
 	         }
 	         else{
 	        	 System.out.println("Not found");
