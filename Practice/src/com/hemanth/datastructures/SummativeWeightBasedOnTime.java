@@ -33,7 +33,7 @@ class NodeTree {
 	public void construct(int weight, int time){
 		root = construct(root, weight, time);
 	}
-	
+	// To construct the tree
 	private SummativeNode construct(SummativeNode root, int weight, int time) {
 		if(root == null) {
 			root = new SummativeNode(weight, time);
@@ -51,7 +51,7 @@ class NodeTree {
 	public void search(int time) {
 		search(root, time);
 	}
-	
+	//To return the summative value
 	private void search(SummativeNode root, int time) {
 		if (root != null) {
 			if(root.time <= time) {
