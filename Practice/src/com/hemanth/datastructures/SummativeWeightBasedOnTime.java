@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+//Node
 class SummativeNode {
 	int time, weight;
 	SummativeNode left, right;
@@ -23,6 +24,7 @@ class SummativeNode {
 	}
 }
 
+//Node Tree
 class NodeTree {
 	private SummativeNode root;
 	
@@ -48,6 +50,7 @@ class NodeTree {
 		return parent;
 	}
 	
+	//Method to search
 	public void search(int time) {
 		search(root, time);
 	}
