@@ -23,7 +23,6 @@ class SummativeNode {
 	}
 }
 
-//Node Tree
 class NodeTree {
 	private SummativeNode root;
 	
