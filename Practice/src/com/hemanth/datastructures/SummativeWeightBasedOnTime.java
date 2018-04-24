@@ -48,7 +48,6 @@ class NodeTree {
 		return parent;
 	}
 	
-	//Method to search
 	public void search(int time) {
 		search(root, time);
 	}
