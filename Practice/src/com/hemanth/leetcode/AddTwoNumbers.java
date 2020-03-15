@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
 
 class ListNode {
     int val;
@@ -21,8 +21,8 @@ class ListNode {
 public class AddTwoNumbers {
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        BigInteger n1 = new BigInteger("0");
-        BigInteger n2 = new BigInteger("0");
+//        BigInteger n1 = new BigInteger("0");
+//        BigInteger n2 = new BigInteger("0");
 
 //        Callable<Void> callable1 = new Callable<Void>() {
 //            @Override
@@ -56,28 +56,41 @@ public class AddTwoNumbers {
 //            //do something if you care about interruption;
 //        }
 
-        Thread t1 = new Thread() {
-            BigInteger n1 = new BigInteger("0");
-          public void run() {
-              n1 = sumList(l1);
-          }
-        };
-        Thread t2 = new Thread() {
-            BigInteger n2 = new BigInteger("0");
-            public void run() {
-                n2 = sumList(l2);
-            }
-        };
-        t1.start();
-        t2.start();
-//        BigInteger n1 = sumList(l1);
-//        BigInteger n2 = sumList(l2);
+//        Thread t1 = new Thread() {
+//            BigInteger n1 = new BigInteger("0");
+//          public void run() {
+//              n1 = sumList(l1);
+//          }
+//        };
+//        Thread t2 = new Thread() {
+//            BigInteger n2 = new BigInteger("0");
+//            public void run() {
+//                n2 = sumList(l2);
+//            }
+//        };
+//        t1.start();
+//        t2.start();
+////        BigInteger n1 = sumList(l1);
+////        BigInteger n2 = sumList(l2);
+//        try {
+//            t1.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+        CompletableFuture<BigInteger> one = CompletableFuture
+                .supplyAsync(() -> sumList(l1));
+        CompletableFuture<BigInteger> two = CompletableFuture
+                .supplyAsync(() -> sumList(l2));
+
+        BigInteger tot = null;
         try {
-            t1.join();
+            tot = one.get().add(two.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
-        BigInteger tot = n1.add(n2);
         String v = tot.toString();
 
         ListNode head = new ListNode(Character.getNumericValue(v.charAt(v.length()-1)));
