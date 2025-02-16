@@ -1,2 +1,2 @@
 # DataStructures And Algorithms
-Data Structures and Algorithm solutions of different websites like Hackerrank, Leetcode, Geeksforgeeks
+Data Structures and Algorithm solutions of different websites like Hackerrank, Leetcode, Geeksforgeeks.
